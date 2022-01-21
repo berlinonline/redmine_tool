@@ -38,7 +38,6 @@ You can run `issue_tree.py` to retrieve a tree of issues starting from a root is
 The output is a JSON object that follows the structure outlined in https://www.redmine.org/projects/redmine/wiki/Rest_Issues, extended with an `children` attribute which contains an array of objects for each child.
 
 ```shell
-(redmine_tool_venv) % python issue_tree.py -h
 usage: issue_tree.py [-h] -r ROOT
 
 Retrieve a tree of issues given a root issue id.
@@ -79,6 +78,23 @@ INFO:root: Retrieving children for issue #36016 ...
     }
   ]
 }
+```
+
+### Tree-to-Dot
+
+You can turn the output of `issue_tree.py` into a [.dot]()-file by running `tree2dot.py`. 
+
+```shell
+usage: tree2dot.py [-h] -i INPUT [-p PRUNE]
+
+Convert a Redmine issues JSON tree to a DOT file. Either read through an input file, or pipe through STDIN.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i INPUT, --input INPUT
+                        The path of a JSON file containing a Redmine issues tree, or '-' for STDIN.
+  -p PRUNE, --prune PRUNE
+                        Comma-separated list of status ids. Issues with these status ids will be pruned.
 ```
 
 ## License
