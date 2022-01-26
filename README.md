@@ -82,17 +82,23 @@ INFO:root: Retrieving children for issue #36016 ...
 
 ### Tree-to-Dot
 
-You can turn the output of `issue_tree.py` into a [.dot]()-file by running `tree2dot.py`. 
+You can turn the output of `issue_tree.py` into SVG (via Graphviz's `.dot`) by running `tree2svg.py`. 
 
 ```shell
-usage: tree2dot.py [-h] -i INPUT [-p PRUNE]
+usage: tree2svg.py [-h] -i INPUT [-s START] [-m MAX_TITLE_LENGTH] [-d {TB,LR}] [-p PRUNE]
 
-Convert a Redmine issues JSON tree to a DOT file. Either read through an input file, or pipe through STDIN.
+Convert a Redmine issues JSON tree to SVG. Either read through an input file, or pipe through STDIN. Output is to STDOUT.
 
 optional arguments:
   -h, --help            show this help message and exit
   -i INPUT, --input INPUT
                         The path of a JSON file containing a Redmine issues tree, or '-' for STDIN.
+  -s START, --start START
+                        The issue id to use as the root of the output, if we only want to render a subtree. Default is the root of the input file.
+  -m MAX_TITLE_LENGTH, --max_title_length MAX_TITLE_LENGTH
+                        Truncate title length to this. Default is -1, meaning do not truncate.
+  -d {TB,LR}, --direction {TB,LR}
+                        Layout direction of the graph.
   -p PRUNE, --prune PRUNE
                         Comma-separated list of status ids. Issues with these status ids will be pruned.
 ```

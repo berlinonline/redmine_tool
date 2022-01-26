@@ -83,7 +83,7 @@ def select_sub_tree(sub_tree_id, root_node):
 
 logging.basicConfig(level=logging.INFO)
 
-parser = argparse.ArgumentParser(description="Convert a Redmine issues JSON tree to a DOT file. Either read through an input file, or pipe through STDIN.")
+parser = argparse.ArgumentParser(description="Convert a Redmine issues JSON tree to SVG. Either read through an input file, or pipe through STDIN. Output is to STDOUT.")
 parser.add_argument('-i', '--input', required=True,
                     help="The path of a JSON file containing a Redmine issues tree, or '-' for STDIN.")
 parser.add_argument('-s', '--start',
